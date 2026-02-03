@@ -30,6 +30,8 @@ project1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 project1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 project1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h
 project1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h
+project1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h
+project1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h
 project1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 project1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 project1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
@@ -45,10 +47,10 @@ project1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 project1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 project1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 project1\main.o: ../Core/Inc/gpio.h
+project1\main.o: D:\stm32 keil\core\ARM\ARMCC\Bin\..\include\string.h
 project1\main.o: ..\bsp\drivers\inc\bsp_led.h
 project1\main.o: ..\bsp\drivers\inc\bsp.h
 project1\main.o: ..\bsp\device\inc\device_manager.h
-project1\main.o: D:\stm32 keil\core\ARM\ARMCC\Bin\..\include\string.h
 project1\main.o: ..\hal\inc\hal.h
 project1\main.o: ..\hal\inc\hal_gpio.h
 project1\main.o: ..\hal\inc\hal.h
@@ -66,4 +68,6 @@ project1\main.o: ..\bsp\board\inc\board.h
 project1\main.o: ..\bsp\board\inc\board_beep.h
 project1\main.o: ..\bsp\board\inc\board_dht11.h
 project1\main.o: ..\bsp\board\inc\board_key.h
+project1\main.o: ..\bsp\board\inc\board_sd.h
+project1\main.o: ..\bsp\board\inc\board_dma.h
 project1\main.o: D:\stm32 keil\core\ARM\ARMCC\Bin\..\include\stdio.h

@@ -1,47 +1,45 @@
 #include "hal_rtc.h"
-
+RTC_HandleTypeDef RTC_HandleStruct={0};
+RTC_DateTypeDef RTC_DateStruct={0};
+RTC_TimeTypeDef RTC_TimeStruct={0};
 void hal_rtc_init(void)
 {
-	RTC_HandleTypeDef RTC_HandleStruct={0};
-	
-	
-	
+	RTC_HandleStruct.Instance=RTC;
 	//1. 初始化RTC 
-	RTC_HandleStruct.Init.AsynchPrediv=0x7F;
+	RTC_HandleStruct.Init.AsynchPrediv=127;
 	RTC_HandleStruct.Init.HourFormat=RTC_HOURFORMAT_24;
 	RTC_HandleStruct.Init.OutPut=RTC_OUTPUT_DISABLE;
 	RTC_HandleStruct.Init.OutPutPolarity=RTC_OUTPUT_POLARITY_HIGH;
 	RTC_HandleStruct.Init.OutPutType=RTC_OUTPUT_TYPE_PUSHPULL;
-	RTC_HandleStruct.Init.SynchPrediv=0x7FFF;
+	RTC_HandleStruct.Init.SynchPrediv=255;
 	
 	HAL_RTC_Init(&RTC_HandleStruct);
 	
 	
-
-	
 	// 5.判断RTC时钟是否是第一次配置，如果是第一次配置，就需要配置时间，否则不需要
-	HAL_RTCEx_BKUPRead(&RTC_HandleStruct,RTC_HandleStruct.Instance->BKP0R);
-	if(RTC_HandleStruct.Instance->BKP0R!=0x5050)
+	
+	printf("CSR = 0x%08lx\r\n", RCC->BDCR);
+
+	if(HAL_RTCEx_BKUPRead(&RTC_HandleStruct,RTC_BKP_DR0)!=0x5050)
 	{	
 		// 6. 因为我们使用的是LSE,所以就在BKP0R寄存器写0x5050
-		HAL_RTCEx_BKUPWrite(&RTC_HandleStruct,RTC_HandleStruct.Instance->BKP0R,0x5050);
+		HAL_RTCEx_BKUPWrite(&RTC_HandleStruct,RTC_BKP_DR0,0x5050);   //第二个填的参数是RTC_BKP寄存器的编号值，也就是偏移量
 		
 		//7.配置RTC日期
-		RTC_DateTypeDef RTC_DateStruct={0};
 		RTC_DateStruct.Year=26;
-		RTC_DateStruct.WeekDay=8;
+		RTC_DateStruct.WeekDay=7;
 		RTC_DateStruct.Month=2;
 		RTC_DateStruct.Date=1;
-		HAL_RTC_SetDate(&RTC_HandleStruct,&RTC_DateStruct,RTC_FORMAT_BCD);
+		HAL_RTC_SetDate(&RTC_HandleStruct,&RTC_DateStruct,RTC_FORMAT_BIN);
 		
 		//8.配置RTC时间
-		RTC_TimeTypeDef RTC_TimeStruct={0};
 		RTC_TimeStruct.Hours=0;
 		RTC_TimeStruct.Minutes=0;
 		RTC_TimeStruct.Seconds=0;
-		RTC_TimeStruct.TimeFormat=RTC_HOURFORMAT12_AM;
+		//初始化 RTC 为 24小时制 (RTC_HOURFORMAT_24) 时，不需要设置 TimeFormat，否则可能会出错。
+		//RTC_TimeStruct.TimeFormat=RTC_HOURFORMAT12_AM;
 		RTC_TimeStruct.SubSeconds=1;
-		HAL_RTC_SetTime(&RTC_HandleStruct,&RTC_TimeStruct,RTC_FORMAT_BCD);
+		HAL_RTC_SetTime(&RTC_HandleStruct,&RTC_TimeStruct,RTC_FORMAT_BIN);
 	}
 	
 	
@@ -52,6 +50,7 @@ void hal_rtc_init(void)
 void HAL_RTC_MspInit(RTC_HandleTypeDef *hrtc)
 {
 	//2 
+	__HAL_RCC_RTC_ENABLE();      //2.3 使能RTC
 	__HAL_RCC_PWR_CLK_ENABLE();  //2.1 打开PWR
 	HAL_PWR_EnableBkUpAccess();  //2.2 取消备份区域写保护 
 	__HAL_RCC_RTC_ENABLE();      //2.3 使能RTC
@@ -70,5 +69,14 @@ void HAL_RTC_MspInit(RTC_HandleTypeDef *hrtc)
 	HAL_RCCEx_PeriphCLKConfig(&RCC_PeriphCLKInitStruct);
 	
 }
+
+void HAL_RTC_GET_Time(void)
+{
+	HAL_RTC_GetTime(&RTC_HandleStruct,&RTC_TimeStruct,RTC_FORMAT_BIN);
+HAL_RTC_GetDate(&RTC_HandleStruct,&RTC_DateStruct,RTC_FORMAT_BIN);
+	printf("%d:%d:%d\r\n",RTC_TimeStruct.Hours,RTC_TimeStruct.Minutes,RTC_TimeStruct.Seconds);
+printf("%d.%d.%d\r\n",RTC_DateStruct.Year,RTC_DateStruct.Month,RTC_DateStruct.Date);
+}
+
 
 

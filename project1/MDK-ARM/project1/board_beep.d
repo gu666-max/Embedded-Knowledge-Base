@@ -31,6 +31,8 @@ project1\board_beep.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 project1\board_beep.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 project1\board_beep.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h
 project1\board_beep.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h
+project1\board_beep.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h
+project1\board_beep.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h
 project1\board_beep.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 project1\board_beep.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 project1\board_beep.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
@@ -53,3 +55,5 @@ project1\board_beep.o: ..\bsp\board\inc\board.h
 project1\board_beep.o: ..\bsp\board\inc\board_beep.h
 project1\board_beep.o: ..\bsp\board\inc\board_dht11.h
 project1\board_beep.o: ..\bsp\board\inc\board_key.h
+project1\board_beep.o: ..\bsp\board\inc\board_sd.h
+project1\board_beep.o: ..\bsp\board\inc\board_dma.h

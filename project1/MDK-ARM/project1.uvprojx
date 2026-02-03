@@ -518,6 +518,16 @@
               <FileType>1</FileType>
               <FilePath>..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_hal_sd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sd.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_ll_sdmmc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_sdmmc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -678,11 +688,6 @@
               <FileType>1</FileType>
               <FilePath>..\hal\src\hal_usart.c</FilePath>
             </File>
-            <File>
-              <FileName>hal_usart.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\hal\inc\hal_usart.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -703,6 +708,11 @@
         <Group>
           <GroupName>board</GroupName>
           <Files>
+            <File>
+              <FileName>hal_usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\hal\inc\hal_usart.h</FilePath>
+            </File>
             <File>
               <FileName>board.c</FileName>
               <FileType>1</FileType>
@@ -752,6 +762,21 @@
               <FileName>board_key.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\bsp\board\inc\board_key.h</FilePath>
+            </File>
+            <File>
+              <FileName>board_sd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\board\src\board_sd.c</FilePath>
+            </File>
+            <File>
+              <FileName>board_sd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\bsp\board\inc\board_sd.h</FilePath>
+            </File>
+            <File>
+              <FileName>board_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\bsp\board\src\board_dma.c</FilePath>
             </File>
           </Files>
         </Group>

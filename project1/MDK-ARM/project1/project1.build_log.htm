@@ -21,30 +21,30 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.8.0
 Dialog DLL:      TCM.DLL V1.48.0.0
  
 <h2>Project:</h2>
-C:\Users\Administrator\Desktop\project demo_1.0\project_demo_1\project1\MDK-ARM\project1.uvprojx
-Project File Date:  02/01/2026
+C:\Users\Administrator\Desktop\project_demo_1\project1\MDK-ARM\project1.uvprojx
+Project File Date:  02/03/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\stm32 keil\core\ARM\ARMCC\Bin'
 Build target 'project1'
 Note: source file '..\bsp\device\src\device_manager.c' - object file renamed from 'project1\device_manager.o' to 'project1\device_manager_1.o'.
 Note: source file '..\bsp\board\src\board.c' - object file renamed from 'project1\board.o' to 'project1\board_1.o'.
-compiling main.c...
+compiling board_sd.c...
+..\bsp\board\inc\board.h(13): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\bsp\board\inc\board_led.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
 ..\hal\inc\hal.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
 ..\hal\inc\hal_gpio.h(12): warning:  #1-D: last line of file ends without a newline
   #endif
 ..\hal\inc\hal_delay.h(8): warning:  #1-D: last line of file ends without a newline
   #endif
-..\hal\inc\hal_rtc.h(6): warning:  #1-D: last line of file ends without a newline
+..\hal\inc\hal_rtc.h(12): warning:  #1-D: last line of file ends without a newline
   #endif
 ..\hal\inc\hal.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
 ..\bsp\drivers\inc\bsp_key.h(67): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\bsp\board\inc\board.h(11): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\bsp\board\inc\board_led.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
 ..\bsp\board\inc\board_beep.h(8): warning:  #1-D: last line of file ends without a newline
   #endif 
@@ -52,15 +52,23 @@ compiling main.c...
   #endif
 ..\bsp\board\inc\board_key.h(11): warning:  #1-D: last line of file ends without a newline
   #endif
-..\bsp\board\inc\board.h(11): warning:  #1-D: last line of file ends without a newline
+..\bsp\board\inc\board_sd.h(15): warning:  #1-D: last line of file ends without a newline
   #endif
-../Core/Src/main.c(122): warning:  #870-D: invalid multibyte character sequence
-  	printf("湿度�?%d%%,温度%d\r\n",shi,wen);
-../Core/Src/main.c: 13 warnings, 0 errors
+..\bsp\board\inc\board_dma.h(6): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\bsp\board\inc\board.h(13): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\bsp\board\inc\board_sd.h(15): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\bsp\board\src\board_sd.c(67): warning:  #223-D: function "Error_Handler" declared implicitly
+        Error_Handler();
+..\bsp\board\src\board_sd.c(88): warning:  #223-D: function "Error_Handler" declared implicitly
+        Error_Handler();
+..\bsp\board\src\board_sd.c: 17 warnings, 0 errors
 linking...
-Program Size: Code=9468 RO-data=480 RW-data=304 ZI-data=2480  
+Program Size: Code=18012 RO-data=488 RW-data=828 ZI-data=3316  
 FromELF: creating hex file...
-"project1\project1.axf" - 0 Error(s), 13 Warning(s).
+"project1\project1.axf" - 0 Error(s), 17 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -83,7 +91,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.4.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

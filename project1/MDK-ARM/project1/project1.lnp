@@ -24,6 +24,8 @@
 "project1\stm32f4xx_hal_rtc.o"
 "project1\stm32f4xx_hal_rtc_ex.o"
 "project1\stm32f4xx_hal_uart.o"
+"project1\stm32f4xx_hal_sd.o"
+"project1\stm32f4xx_ll_sdmmc.o"
 "project1\system_stm32f4xx.o"
 "project1\croutine.o"
 "project1\event_groups.o"
@@ -49,6 +51,8 @@
 "project1\board_beep.o"
 "project1\board_dht11.o"
 "project1\board_key.o"
+"project1\board_sd.o"
+"project1\board_dma.o"
 --library_type=microlib --strict --scatter "project1\project1.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

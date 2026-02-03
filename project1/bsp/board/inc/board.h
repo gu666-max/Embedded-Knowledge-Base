@@ -8,4 +8,6 @@
 #include "bsp_led.h"
 #include "board_dht11.h"
 #include "board_key.h"
+#include "board_sd.h"
+#include "board_dma.h"
 #endif

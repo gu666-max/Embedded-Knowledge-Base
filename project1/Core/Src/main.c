@@ -20,7 +20,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "gpio.h"
-
+#include "string.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "bsp_led.h"
@@ -28,6 +28,9 @@
 #include "device_manager.h"
 #include "board.h"
 #include "stdio.h"
+#include "hal.h"
+#include "board.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +51,9 @@
 
 /* USER CODE BEGIN PV */
 uint8_t buffer[5];
+uint8_t pbuffer[512]__attribute__((aligned(4)));
+uint8_t pbuuefr[3];
+uint8_t pbuffer1[512]={0x66,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x10};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -146,6 +152,7 @@ int main(void)
   /* Initialize all configured peripherals */
   //MX_GPIO_Init();
 	MX_USART1_UART_Init();
+	MX_DMA_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -174,11 +181,45 @@ int main(void)
 	
 	
 	device_write("led1",1);
+	//hal_rtc_init();
+	
+	
+	int aaaa=sd_init();
+	printf("aaaa=%d\r\n",aaaa);
+	
+	
+	//HAL_Delay(2000);
+	aaaa=sd_write(pbuffer1);
+	
+	
+
+	printf("aaaa  =%d\r\n",aaaa);
+	
+//	aaaa=sd_read(pbuffer);
+//	
+//	printf("aaaa  =%d\r\n",aaaa);
+
   while (1)
   {
 		
-		device_write("key1",0);
-		HAL_Delay(10);
+		memset(pbuffer,0,sizeof(pbuffer));
+		aaaa=sd_read(pbuffer);
+
+		while(aaaa)
+		{
+			aaaa=sd_read(pbuffer);
+		}
+		for(int i=0;i<11;i++)
+			printf("%02X ", pbuffer[i]);
+		printf("\n");
+//		
+		HAL_Delay(2000);
+//			HAL_RTC_GET_Time();
+//			hal_delay_ms(2000);
+//		device_write("key1",0);
+//		HAL_Delay(10);
+		
+			
 			//dht11();
 //		device_write("led1",1);
 //		device_write("beep1",1);
@@ -245,7 +286,13 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+//void sd_init(void)
+//{
+////	SD_HandleTypeDef SDhandleStruct={0};
+////	SDhandleStruct.Instance=
+////	//SDhandleStruct.Instance=;
+////	HA-L_SD_Init(&SDhandleStruct);
+//}
 /* USER CODE END 4 */
 
 /**
