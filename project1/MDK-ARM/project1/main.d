@@ -71,3 +71,6 @@ project1\main.o: ..\bsp\board\inc\board_key.h
 project1\main.o: ..\bsp\board\inc\board_sd.h
 project1\main.o: ..\bsp\board\inc\board_dma.h
 project1\main.o: D:\stm32 keil\core\ARM\ARMCC\Bin\..\include\stdio.h
+project1\main.o: ..\ff14b\source\inc\ff.h
+project1\main.o: ..\ff14b\source\inc\ffconf.h
+project1\main.o: ..\ff14b\source\inc\diskio.h

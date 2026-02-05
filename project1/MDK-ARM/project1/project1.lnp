@@ -53,6 +53,10 @@
 "project1\board_key.o"
 "project1\board_sd.o"
 "project1\board_dma.o"
+"project1\diskio.o"
+"project1\ff.o"
+"project1\ffsystem.o"
+"project1\ffunicode.o"
 --library_type=microlib --strict --scatter "project1\project1.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

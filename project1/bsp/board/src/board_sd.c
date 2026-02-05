@@ -1,12 +1,14 @@
 #include "board_sd.h"
 
 SD_HandleTypeDef SD_HandleStruct;
+HAL_SD_CardInfoTypeDef HAL_SD_CardInfoStruct;
 DMA_HandleTypeDef hdma_sdio_rx;
 DMA_HandleTypeDef hdma_sdio_tx;
 
 uint8_t sd_init(void)
 {
 	memset(&SD_HandleStruct,0,sizeof(SD_HandleStruct));
+	HAL_SD_CardInfoTypeDef HAL_SD_CardInfoStruct={0};
 	SD_HandleStruct.Instance=SDIO;
 	SD_HandleStruct.Init.HardwareFlowControl=SDIO_HARDWARE_FLOW_CONTROL_DISABLE;  //硬件流控
 	SD_HandleStruct.Init.ClockPowerSave=SDIO_CLOCK_POWER_SAVE_ENABLE;   //是否关闭时钟电源
@@ -25,6 +27,7 @@ uint8_t sd_init(void)
 	MODIFY_REG(SD_HandleStruct.Instance->CLKCR,SDIO_CLKCR_CLKDIV,0);
 	__HAL_SD_ENABLE(&SD_HandleStruct);
 	
+	HAL_SD_GetCardInfo(&SD_HandleStruct,&HAL_SD_CardInfoStruct);
 	return 0;  //成功返回0
 }
 
@@ -97,42 +100,41 @@ void HAL_SD_MspInit(SD_HandleTypeDef *hsd)
 }
 
 
-uint8_t sd_read(uint8_t *pbuffer)
+uint8_t sd_read(uint8_t *pbuffer,uint32_t BlockAddr, uint32_t NumberOfBlocks)
 {
 
-	if(HAL_SD_ReadBlocks_DMA(&SD_HandleStruct,pbuffer,3000,1)!=HAL_OK)
+	if(HAL_SD_ReadBlocks_DMA(&SD_HandleStruct,pbuffer,BlockAddr,NumberOfBlocks)!=HAL_OK)
 		return 1;
+
+	
+	while (HAL_SD_GetCardState(&SD_HandleStruct) != HAL_SD_CARD_TRANSFER);
+   // 建议增加一个超时退出逻辑，防止死机
 
 	
 	return 0;
 }
 
 
-uint8_t sd_write(uint8_t *pbuffer)
+uint8_t sd_write(const unsigned char *pbuffer,uint32_t BlockAddr, uint32_t NumberOfBlocks)
 {
 
-	
-	
-	
-	while(HAL_SD_GetCardState(&SD_HandleStruct)!=HAL_SD_CARD_TRANSFER)
-	{
-		;
-	}
-	
-	
-	int a=HAL_SD_WriteBlocks_DMA(&SD_HandleStruct,pbuffer,3000,1);
 
-	while(HAL_SD_GetCardState(&SD_HandleStruct)!=HAL_SD_CARD_TRANSFER)
-	{
-		;
-	}
+	while(HAL_SD_GetCardState(&SD_HandleStruct)!=HAL_SD_CARD_TRANSFER);
+	
+	
+	int a=HAL_SD_WriteBlocks_DMA(&SD_HandleStruct,(uint8_t*)pbuffer,BlockAddr,NumberOfBlocks);
+
+	while(HAL_SD_GetCardState(&SD_HandleStruct)!=HAL_SD_CARD_TRANSFER);
 	
 	return a;
 		
 }
 
 
-
+uint8_t sd_staus(void)
+{
+	return 0;  //(HAL_SD_GetCardState(&SD_HandleStruct)==HAL_SD_CARD_READY?0:1);
+}
 
 
 

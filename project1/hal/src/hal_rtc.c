@@ -73,9 +73,9 @@ void HAL_RTC_MspInit(RTC_HandleTypeDef *hrtc)
 void HAL_RTC_GET_Time(void)
 {
 	HAL_RTC_GetTime(&RTC_HandleStruct,&RTC_TimeStruct,RTC_FORMAT_BIN);
-HAL_RTC_GetDate(&RTC_HandleStruct,&RTC_DateStruct,RTC_FORMAT_BIN);
-	printf("%d:%d:%d\r\n",RTC_TimeStruct.Hours,RTC_TimeStruct.Minutes,RTC_TimeStruct.Seconds);
-printf("%d.%d.%d\r\n",RTC_DateStruct.Year,RTC_DateStruct.Month,RTC_DateStruct.Date);
+	HAL_RTC_GetDate(&RTC_HandleStruct,&RTC_DateStruct,RTC_FORMAT_BIN);
+//	printf("%d:%d:%d\r\n",RTC_TimeStruct.Hours,RTC_TimeStruct.Minutes,RTC_TimeStruct.Seconds);
+//	printf("%d.%d.%d\r\n",RTC_DateStruct.Year,RTC_DateStruct.Month,RTC_DateStruct.Date);
 }
 
 
