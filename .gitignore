@@ -1,0 +1,38 @@
+# ── 编译产物（外设资产包内） ──
+**/Objects/
+**/Listings/
+**/DebugConfig/
+**/RTE/
+**/*.o
+**/*.d
+**/*.obj
+**/*.axf
+**/*.elf
+**/*.map
+**/*.hex
+**/*.bin
+**/*.lst
+**/*.crf
+**/*.dep
+**/*.lnp
+**/*.htm
+**/*.build_log.htm
+**/*.uvguix.*
+**/*.uvoptx
+**/*.scvd
+**/*.su
+**/*.iex
+
+# ── 编辑器 / 系统 ──
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ── 临时文件 ──
+~$*
+*.tmp
+*.bak
