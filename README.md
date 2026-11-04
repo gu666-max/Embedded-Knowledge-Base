@@ -33,6 +33,7 @@
 图例：⬜ 未开始 ｜ 🟡 进行中 ｜ ✅ 已沉淀 ｜ 🧊 样本（只到 L3，不进资产库）
 
 **当前焦点**：`uart_dma_idle` —— D1：画帧级时序图与数据通路图（见 [`peripherals/uart_dma_idle/D1-任务卡.md`](./peripherals/uart_dma_idle/D1-任务卡.md)）
+教材：[`UART 完整教程`](./peripherals/uart_dma_idle/UART完整教程.md)（19 章，每章带作业，物理层 → 寄存器 → DMA → 工程化 → 面试壁垒）
 
 | 外设 | L1 | L2 | L3 | L4 | L5 | L6 | 状态 | 开始 | 目标 |
 |---|---|---|---|---|---|---|---|---|---|
